@@ -43,4 +43,20 @@ void loop() {
   digitalWrite(LED2,LOW);
   delay(Time);
 
+  //Using for loop
+ /*
+  for(int i=9;i<13;i++){
+    digitalWrite(i,HIGH);
+    delay(100);
+    digitalWrite(i,LOW);
+    delay(100);
+  }
+
+  for(int j=12;j>8;j--){
+    digitalWrite(j,HIGH);
+    delay(100);
+    digitalWrite(j,LOW);
+    delay(100);
+  }
+  */
 }
