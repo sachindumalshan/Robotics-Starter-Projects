@@ -9,7 +9,7 @@ const int HX711_SCK = 5;
 
 HX711_ADC LoadCell(HX711_DT, HX711_SCK);
 
-const int calculateWeight = 0;
+const int calWeight = 0;
 unsigned long t = 0;
 
 int x =5;
