@@ -1,3 +1,4 @@
+//initialize the pins
 int LED1 = 9;
 int LED2 = 10;
 int LED3 = 11;
