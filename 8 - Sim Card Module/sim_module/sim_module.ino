@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial GSM(10,11);
+SoftwareSerial GSM(7,8 );
 
 void setup()
 {
