@@ -3,7 +3,9 @@ char val;
 void setup() {
   Serial.begin(9600);
   pinMode(13,OUTPUT);
+  Serial.println("Searching...");
   Serial.println("Ready to connect");
+  
 }
 
 void loop() {
