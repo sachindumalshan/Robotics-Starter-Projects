@@ -1,58 +1,61 @@
-#include <SoftwareSerial.h>
+#include<SoftwareSerial.h> //software serial library for serial communication between Arduino & sim900 GSM
 
-SoftwareSerial GSM(7,8 );
+SoftwareSerial mySerial(7, 8);//connect Tx pin of GSM to pin 8 of Arduino && Rx pin of GSM to pin no 9
 
-void setup()
-{
-  GSM.begin(9600);   // Setting the baud rate of GSM Module  
-  Serial.begin(9600);    // Setting the baud rate of Serial Monitor (Arduino)
-  Serial.println ("SIM900A Ready");
-  delay(100);
-  Serial.println ("Type s to send message or r to receive message");
+int REY = 6; // relay output
+
+String message;
+
+String lampState = "HIGH";// Create a variable to store Lamp state
+
+void setup() {
+
+mySerial.begin(9600); // Setting the baud rate of GSM Module
+
+delay(20000);
+
+mySerial.println("AT+CMGF=1"); // set text mode
+
+delay(1000);
+
+mySerial.println("AT+CNMI=2,2,0,0,0"); // AT Command to receive a live SMS
+
+pinMode(REY, OUTPUT);
+
+digitalWrite(REY, LOW);
+
+delay(100);
+
 }
 
+void loop() {
 
-void loop()
-{
-  if (Serial.available()>0)
-   switch(Serial.read())
-  {
-    case 's':
-      SendMessage();
-      break;
-    case 'r':
-      RecieveMessage();
-      break;
-  }
+if (mySerial.available() > 0) {
 
- if (GSM.available()>0)
-   Serial.write(GSM.read());
+message = mySerial.readString(); }
+
+if (message.indexOf("ON") > -1) {
+
+digitalWrite(REY, HIGH);
+
+lampState = "on"; }
+
+if (message.indexOf("OFF") > -1) {
+
+digitalWrite(REY, LOW);
+
+lampState = "off"; }
+
+if (message.indexOf("STATE") > -1) {
+
+mySerial.println("AT+CMGS=\"+94766166355\"\r"); // replace XXX.. with your number with country code delay(1000);
+
+mySerial.println("Relay is "+ lampState);// Message content
+
+delay(1000);
+
+mySerial.println((char)26);// ASCII code of CTRL+Z
+
+delay(100); }
+
 }
-
-
- void SendMessage()
-{
-  Serial.println ("Sending Message");
-  GSM.println("AT+CMGF=1");    //Sets the GSM Module in Text Mode
-  delay(1000);
-  Serial.println ("Set SMS Number");
-  GSM.println("AT+CMGS=\"+94766166355\"\r"); //Mobile phone number to send message
-  delay(1000);
-  Serial.println ("Set SMS Content");
-  GSM.println("Good morning, how are you doing?");// Messsage content
-  delay(100);
-  Serial.println ("Finish");
-  GSM.println((char)26);// ASCII code of CTRL+Z
-  delay(1000);
-  Serial.println ("Message has been sent ->SMS Alert Service");
-}
-
-
- void RecieveMessage()
-{
-  Serial.println ("SIM900A Membaca SMS");
-  delay (1000);
-  GSM.println("AT+CNMI=2,2,0,0,0"); // AT Command to receive a live SMS
-  delay(1000);
-  Serial.write ("Unread Message done");
- }
