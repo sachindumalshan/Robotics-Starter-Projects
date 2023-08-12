@@ -14,5 +14,5 @@ void loop() {
   {
   digitalWrite(3,HIGH); //high to continue proving signal and water supply
   }
-  delay(400); 
+  delay(1000); 
 }

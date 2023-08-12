@@ -1,0 +1,11 @@
+Home automation
+---------------
+
+one bulb
+fan control
+gas sensor
+water level sensor
+temperature and humidity sensor
+pir sensor
+rain sensor
+i2c display
