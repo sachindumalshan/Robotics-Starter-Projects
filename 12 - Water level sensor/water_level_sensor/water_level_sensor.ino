@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
   digitalWrite(POWER_PIN, HIGH);  // turn the sensor ON
-  delay(10);                      // wait 10 milliseconds
+  delay(100);                      // wait 10 milliseconds
   value = analogRead(SIGNAL_PIN); // read the analog value from sensor
   digitalWrite(POWER_PIN, LOW);   // turn the sensor OFF
 
