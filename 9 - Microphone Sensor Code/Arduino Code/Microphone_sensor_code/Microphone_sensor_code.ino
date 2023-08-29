@@ -1,4 +1,4 @@
-int ledPin=13;
+int ledPin=12;
 int sensorPin=7;
 boolean val =0;
 
