@@ -7,11 +7,11 @@ void setup() {
 }
 
 void loop() {
-  int output = digitalRead(DO);
-  if (output == LOW) {
-    if (millis() - last_event > 25) {
-      Serial.println("Clap sound was detected!");
-    }
-    last_event = millis();
-  }
+  float t = dht.readTemperature();
+  temperature = t;
+  float h = dht.readHumidity();
+  humidity = h;
+  Serial.print("Temperature: "); Serial.println(t);
+  Serial.print("Humidity: "); Serial.println(h);
+  delay(500);
 }
