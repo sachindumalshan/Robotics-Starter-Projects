@@ -1,5 +1,5 @@
 int trigPin = 10;    // Trigger
-int echoPin = 11;    // Echo
+int echoPin = 12;    // Echo
 long duration, cm, inches;
  
 void setup() {
