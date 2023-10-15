@@ -3,7 +3,7 @@ unsigned long last_event = 0;
 
 void setup() {
   pinMode(DO, INPUT); 
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
 void loop() {
