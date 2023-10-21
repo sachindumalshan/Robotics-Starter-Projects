@@ -192,7 +192,7 @@ unsigned int readRegister(byte thisRegister, int bytesToRead) {
   digitalWrite(chipSelectPin, HIGH);
 
   // return the result:
-
+  Serial.println(result)
   return (result);
 }
 
