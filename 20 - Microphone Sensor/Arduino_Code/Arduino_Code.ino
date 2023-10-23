@@ -2,7 +2,7 @@
 unsigned long last_event = 0;
 
 void setup() {
-  pinMode(DO, INPUT); 
+  pinMode(A0, INPUT); 
   Serial.begin(115200);
 }
 
