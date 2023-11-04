@@ -1,13 +1,12 @@
-int redLED = 13;
+#define LED 13
 
 void setup() {
-  pinMode(redLED,OUTPUT);
-    
+  pinMode(LED,OUTPUT);
 }
 
 void loop() {
-  
-  digitalWrite(redLED,LOW);
+  digitalWrite(LED,HIGH);
   delay(1000);
-
+  digitalWrite(LED,LOW);
+  delay(1000);
 }
