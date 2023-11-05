@@ -1,11 +1,12 @@
 char val;
+//Serial value is equal to 1 > LED will ON
+//Serial value is equal to 2 > LED will OFF
 
 void setup() {
   Serial.begin(9600);
   pinMode(13,OUTPUT);
   Serial.println("Searching...");
   Serial.println("Ready to connect");
-  
 }
 
 void loop() {
@@ -20,6 +21,7 @@ void loop() {
     }
   else if(val=="2"){
     digitalWrite(13,LOW);
+    Serial.println("LED OFF");
     }
   delay(100);
 }
